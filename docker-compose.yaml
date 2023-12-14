@@ -17,6 +17,7 @@ services:
     container_name: sqlitebrowser
     volumes:
       - ./volumes/sqlitebrowser/config:/config
+      - ./volumes/planning-poker:/mnt/planning-poker
     ports:
       - 3000:3000
     restart: unless-stopped
