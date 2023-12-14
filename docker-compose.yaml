@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  planning-poker:
+    image: ilhamfadhilah/planning-poker:v1.0.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - PP_BOT_TOKEN
+      - PP_BOT_DB_PATH
+    volumes:
+      - ./volumes/planning-poker:/db
+  sqlitebrowser:
+    image: lscr.io/linuxserver/sqlitebrowser:latest
+    container_name: sqlitebrowser
+    volumes:
+      - ./volumes/sqlitebrowser/config:/config
+    ports:
+      - 3000:3000
+    restart: unless-stopped
